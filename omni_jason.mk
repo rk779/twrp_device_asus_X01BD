@@ -26,6 +26,11 @@ $(call inherit-product, vendor/omni/config/common.mk)
 PRODUCT_COPY_FILES += \
     bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.usb.controller=a800000.dwc3 \
+    sys.usb.rndis.func.name=rndis_bam \
+    sys.usb.rmnet.func.name=rmnet_bam
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := omni_jason
 PRODUCT_DEVICE := jason
