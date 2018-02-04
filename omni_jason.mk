@@ -22,10 +22,6 @@ $(call inherit-product, build/target/product/embedded.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-# Time Zone data for recovery
-PRODUCT_COPY_FILES += \
-    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
-
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.controller=a800000.dwc3 \
     sys.usb.rndis.func.name=rndis_bam \

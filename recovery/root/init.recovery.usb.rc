@@ -26,6 +26,7 @@
 #
 
 on boot
+    write /sys/class/android_usb/android0/iSerial ${ro.serialno}
     mkdir /dev/usb-ffs 0770 shell shell
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount configfs none /config
@@ -44,12 +45,15 @@ on boot
     mkdir /config/usb_gadget/g1/functions/midi.gs5
     mkdir /config/usb_gadget/g1/functions/ffs.adb
     mkdir /config/usb_gadget/g1/functions/diag.diag
+    mkdir /config/usb_gadget/g1/functions/diag.diag_mdm
     mkdir /config/usb_gadget/g1/functions/cser.dun.0
     mkdir /config/usb_gadget/g1/functions/cser.nmea.1
+    mkdir /config/usb_gadget/g1/functions/cser.dun.2
     mkdir /config/usb_gadget/g1/functions/gsi.rmnet
     mkdir /config/usb_gadget/g1/functions/gsi.rndis
     mkdir /config/usb_gadget/g1/functions/gsi.dpl
     mkdir /config/usb_gadget/g1/functions/qdss.qdss
+    mkdir /config/usb_gadget/g1/functions/qdss.qdss_mdm
     mkdir /config/usb_gadget/g1/functions/rndis_bam.rndis
     mkdir /config/usb_gadget/g1/functions/rmnet_bam.rmnet
     mkdir /config/usb_gadget/g1/functions/rmnet_bam.dpl
@@ -82,8 +86,11 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=mtp,adb
     rm /config/usb_gadget/g1/configs/b.1/f3
     rm /config/usb_gadget/g1/configs/b.1/f4
     rm /config/usb_gadget/g1/configs/b.1/f5
-    write /config/usb_gadget/g1/idVendor 0x05C6
-    write /config/usb_gadget/g1/idProduct 0x9039
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x4ee2
     symlink /config/usb_gadget/g1/functions/mtp.gs0 /config/usb_gadget/g1/configs/b.1/f1
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f2
     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
@@ -99,6 +106,9 @@ on property:sys.usb.ffs.ready=1 && property:sys.usb.config=adb
     rm /config/usb_gadget/g1/configs/b.1/f3
     rm /config/usb_gadget/g1/configs/b.1/f4
     rm /config/usb_gadget/g1/configs/b.1/f5
+    rm /config/usb_gadget/g1/configs/b.1/f6
+    rm /config/usb_gadget/g1/configs/b.1/f7
+    rm /config/usb_gadget/g1/configs/b.1/f8
     write /config/usb_gadget/g1/idVendor 0x18d1
     write /config/usb_gadget/g1/idProduct 0x4ee7
     symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
