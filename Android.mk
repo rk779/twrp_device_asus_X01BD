@@ -25,7 +25,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),jason)
+ifeq ($(TARGET_DEVICE),X01BD)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 

@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_jason.mk
+    $(LOCAL_DIR)/omni_X01BD.mk
