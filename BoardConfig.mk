@@ -84,5 +84,3 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TW_EXCLUDE_TWRPAPP := true
 TW_NO_EXFAT_FUSE := true
-
-TARGET_SYSTEM_PROP := device/asus/X01BD/system.prop
